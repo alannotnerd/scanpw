@@ -32,10 +32,23 @@ pub fn try_scanpw(echo: Option<char>) -> crossterm::Result<String> {
                 // Normal character input
                 KeyEvent {
                     code: KeyCode::Char(c),
-                    modifiers,
-                } if modifiers.is_empty() => {
-                    let c = echo.unwrap_or(c);
-                    execute!(stdout(), Print(c))?;
+                    modifiers: KeyModifiers::NONE,
+                } => {
+                    let placeholder = echo.unwrap_or(c);
+                    execute!(stdout(), Print(placeholder))?;
+
+                    // Add the character to the password
+                    pw.push(c);
+                }
+
+                KeyEvent {
+                    code: KeyCode::Char(c),
+                    modifiers: KeyModifiers::SHIFT,
+                } => {
+                    let c = c.to_ascii_uppercase();
+
+                    let placeholder = echo.unwrap_or(c);
+                    execute!(stdout(), Print(placeholder))?;
 
                     // Add the character to the password
                     pw.push(c);

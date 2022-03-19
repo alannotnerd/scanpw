@@ -5,6 +5,7 @@ fn main() {
 
     let echo_settings = None;
 
+    let password = scanpw!(echo_settings, "Username: ");
     let password = scanpw!(echo_settings, "Password: ");
 
     println!("\"{}\" was entered", password);

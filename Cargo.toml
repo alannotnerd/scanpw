@@ -1,6 +1,6 @@
 [package]
 name = "scanpw"
-version = "0.1.2"
+version = "0.1.3"
 authors = ["Charles Hall <charles@typ3.tech>", "alan1995wang@outlook.com"]
 edition = "2018"
 description = "Read a password from standard input"
@@ -24,3 +24,7 @@ winapi = "0.3"
 
 [dev-dependencies]
 scanln = "0.1"
+
+[[example]]
+name = "basic"
+path = "./examples/prompt_no_echo.rs"
