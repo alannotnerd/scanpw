@@ -1,0 +1,26 @@
+[package]
+name = "scanpw"
+version = "0.1.1"
+authors = ["Charles Hall <charles@typ3.tech>", "alan1995wang@outlook.com"]
+edition = "2018"
+description = "Read a password from standard input"
+homepage = "https://forge.typ3.tech/charles/scanpw"
+repository = "https://github.com/alannotnerd/scanpw"
+documentation = "https://docs.rs/scanpw"
+license = "MIT OR Apache-2.0"
+readme = "README.md"
+keywords = ["input", "terminal", "stdin", "read", "password"]
+categories = ["command-line-interface", "command-line-utilities"]
+
+[dependencies]
+crossterm = "0.17"
+cfg-if = "0.1"
+
+[target.'cfg(unix)'.dependencies]
+nix = "0.17"
+
+[target.'cfg(windows)'.dependencies]
+winapi = "0.3"
+
+[dev-dependencies]
+scanln = "0.1"
