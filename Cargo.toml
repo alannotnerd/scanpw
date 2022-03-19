@@ -1,6 +1,6 @@
 [package]
 name = "scanpw"
-version = "0.1.1"
+version = "0.1.2"
 authors = ["Charles Hall <charles@typ3.tech>", "alan1995wang@outlook.com"]
 edition = "2018"
 description = "Read a password from standard input"

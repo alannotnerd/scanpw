@@ -46,6 +46,7 @@ pub fn try_scanpw(echo: Option<char>) -> crossterm::Result<String> {
                     code: KeyCode::Enter,
                     ..
                 } => {
+                    execute!(stdout(), Print('\n'))?;
                     execute!(stdout(), MoveToNextLine(1))?;
                     break;
                 }
