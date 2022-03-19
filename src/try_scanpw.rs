@@ -57,19 +57,17 @@ pub fn try_scanpw(echo: Option<char>) -> crossterm::Result<String> {
                 } => {
                     // If echo characters are enabled and any exist, remove the
                     // rightmost one
-                    if echo.is_some() {
-                        let (cur_left, _height) = position()?;
+                    let (cur_left, _height) = position()?;
 
-                        // True if the next position isn't past the left of the
-                        // column where the cursor started
-                        let not_too_far = cur_left
-                            .checked_sub(1)
-                            .map(|np| np >= max_left)
-                            .unwrap_or(false);
+                    // True if the next position isn't past the left of the
+                    // column where the cursor started
+                    let not_too_far = cur_left
+                        .checked_sub(1)
+                        .map(|np| np >= max_left)
+                        .unwrap_or(false);
 
-                        if not_too_far {
-                            execute!(stdout(), MoveLeft(1), Print(" "), MoveLeft(1))?;
-                        }
+                    if not_too_far {
+                        execute!(stdout(), MoveLeft(1), Print(" "), MoveLeft(1))?;
                     }
 
                     // Delete the character from the password
